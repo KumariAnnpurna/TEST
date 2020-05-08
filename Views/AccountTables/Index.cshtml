@@ -1,0 +1,259 @@
+﻿@model IEnumerable<Test.Models.AccountTable>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@*<h2>Index</h2>*@
+
+<h2 style="text-align:center;color:royalblue">Account Holder</h2>
+<p>
+</p>    <a asp-action="Create">Add New</a>
+<div class="btnbtn-success">
+    @Html.ActionLink("ExportAllAccount", "OnPostExport", "AccountTables")
+</div>
+
+<table class="table table-striped- table-bordered table-hover table-checkable dataTable no-footer dtr-inline" id="m_table_1" role="grid" aria-describedby="m_table_1_info">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mobile)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Country)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.State)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.UserName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Password)
+                </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mobile)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Country)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.State)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Password)
+                    </td>*@
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.UserId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.UserId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.UserId">Delete</a>   |
+                    <a asp-action="OnPostExport" asp-route-id="@item.UserId">ExportSingleAccount</a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+
+    table.yui {
+        font-family: arial;
+        border-collapse: collapse;
+        border: solid 3px #7f7f7f;
+        font-size: small;
+    }
+
+        table.yui td {
+            padding: 5px;
+            border-right: solid 1px #7f7f7f;
+        }
+
+        table.yui .even {
+            background-color: #E1ECF9;
+        }
+
+        table.yui .odd {
+            background-color: lightgray;
+        }
+
+        table.yui th {
+            border: 1px solid #7f7f7f;
+            padding: 5px;
+            height: auto;
+            background: #c8eef7;
+        }
+
+            table.yui th a {
+                text-decoration: none;
+                text-align: center;
+                padding-right: 20px;
+                font-weight: bold;
+                white-space: nowrap;
+            }
+
+        table.yui tfoot td {
+            border-top: 1px solid #7f7f7f;
+            background-color: #E1ECF9;
+        }
+
+        table.yui thead td {
+            vertical-align: middle;
+            background-color: #E1ECF9;
+            border: none;
+        }
+
+        table.yui thead .tableHeader {
+            font-size: larger;
+            font-weight: bold;
+        }
+
+        table.yui thead .filter {
+            text-align: right;
+        }
+
+        table.yui tfoot {
+            background-color: #E1ECF9;
+            text-align: center;
+        }
+
+        table.yui .tablesorterPager {
+            padding: 10px 0 10px 0;
+        }
+
+            table.yui .tablesorterPager span {
+                padding: 0 5px 0 5px;
+            }
+
+            table.yui .tablesorterPager input.prev {
+                width: auto;
+                margin-right: 10px;
+            }
+
+            table.yui .tablesorterPager input.next {
+                width: auto;
+                margin-left: 10px;
+            }
+
+        table.yui .pagedisplay {
+            font-size: 10pt;
+            width: 30px;
+            border: 0px;
+            background-color: #E1ECF9;
+            text-align: center;
+            vertical-align: top;
+        }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    /* Zebra striping */
+    tr:nth-of-type(even) {
+        background: lightgoldenrodyellow;
+    }
+
+    th {
+        background-color: royalblue;
+        color: white;
+        font-weight: bold;
+    }
+
+    td, th {
+        padding: 6px;
+        border: 1px solid #ccc;
+        text-align: left;
+    }
+
+    @@media only screen and (max-width: 500px) {
+        tr {
+            border: 1px solid #ccc;
+        }
+
+        thead {
+            display: none;
+        }
+
+        td {
+            display: block;
+        }
+
+            td:before {
+                content: attr(data-th);
+                display: block;
+                font-weight: bold;
+            }
+
+            td:nth-of-type(1):before {
+                content: "First Name";
+            }
+
+            td:nth-of-type(2):before {
+                content: "Last Name";
+            }
+
+            td:nth-of-type(3):before {
+                content: "Address";
+            }
+
+            td:nth-of-type(4):before {
+                content: "Mobile";
+            }
+
+            td:nth-of-type(5):before {
+                content: "Email";
+            }
+
+            td:nth-of-type(6):before {
+                content: "Country";
+            }
+
+            td:nth-of-type(7):before {
+                content: "State";
+            }
+
+            td:nth-of-type(8):before {
+                content: "Amount";
+            }
+    }
+</style>

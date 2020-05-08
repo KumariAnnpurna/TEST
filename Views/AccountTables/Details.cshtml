@@ -1,0 +1,91 @@
+﻿@model Test.Models.AccountTable
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+@*<h2>Details</h2>
+
+    <div>
+        <h4>AccountTable</h4>
+        <hr />*@
+<br />
+<br />
+<div class="container center_div">
+    <h2 style="text-align:center;color:royalblue">Account Holder</h2>
+    <hr />
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Mobile)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Mobile)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Country)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Country)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.State)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+        @*<dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>*@
+    </dl>
+</div>
+<div class="form-group" style="text-align:center;">
+    <a asp-action="Edit" asp-route-id="@Model.UserId" style="background-color:royalblue;">Edit</a> |
+
+</div>
+<a asp-action="Index">Back to List</a>
+<style>
+    .center_div {
+        margin: 0 auto;
+        width: 40% /* value of your choice which suits your alignment */
+    }
+</style>
